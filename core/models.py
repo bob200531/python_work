@@ -1,5 +1,6 @@
 from django.db import models
-
+from worker.models import Workers
+from django.contrib.auth.models import User
 # Create your models here.
 class Vacancy(models.Model):
     title=models.CharField(max_length=255)
@@ -8,6 +9,14 @@ class Vacancy(models.Model):
     is_relevant=models.BooleanField(default=True)
     email=models.EmailField()
     contacts=models.CharField(max_length=100,verbose_name='контакты')
+    candidate=models.ManyToManyField(
+        to=Workers,
+        blank=True
+    )
+    review=models.ManyToManyField(
+        to=User,
+        blank=True
+    )
 
 # def __str__(self):
 #     return self.title
@@ -19,6 +28,6 @@ class Comapany(models.Model):
     number_employees=models.IntegerField(null=True,blank=True)
     search_employees=models.BooleanField(default=True)
 
-
 def __str__(self):
     return self.title
+

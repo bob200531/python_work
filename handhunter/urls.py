@@ -21,7 +21,7 @@ from django.urls import path
 # from handhunter.core.views import contacts
 # from handhunter.core.views import about
 from core.views import about, contacts,adres,homepage,vacancies_list,copmpany_list
-from worker.views import workers_Info
+from worker.views import workers_Info,workers_info
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/',about),
@@ -32,4 +32,5 @@ urlpatterns = [
     path('vacancies/',vacancies_list),
     path('company/',copmpany_list),
     path('workers/',workers_Info),
+    path('worker/<int:id>/',workers_info),
 ]
