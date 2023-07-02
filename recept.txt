@@ -4,7 +4,7 @@ pip install django
 pip freeze > requirements.txt
 django-admin startproject handhunter . # (!) пробел и точка в конце
 python manage.py migrate
-python manage.py createsuperuserg
+python manage.py createsuperuser
 # далее вводит логин и пароль
 # если что-то спросить, просто "у" (английское) и enter
 python manage.py runserver
@@ -35,8 +35,8 @@ git push
 # git clone https://github.com/Amankaium/py3-hh.git
 
 
-модели
-python manage.py makemigrations сценарий
+модели сценарий
+python manage.py makemigrations
 python manage.py migrate
 
 

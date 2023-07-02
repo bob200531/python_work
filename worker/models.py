@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Workers(models.Model):# один к одному
-    user=models.OneToOneField(
+    username=models.OneToOneField(
         to=User,
         null=True,
         blank=False,
@@ -28,8 +28,8 @@ class Coment(models.Model):
     )
 
 class Resume(models.Model):
-    # name=models.CharField(max_length=255)
-    name=models.ForeignKey(
+    name=models.CharField(max_length=255)
+    author=models.ForeignKey(
         to=Workers,
         on_delete=models.CASCADE
     )
@@ -41,3 +41,5 @@ class Resume(models.Model):
 
     def __str__(self):
         return f"{self.author.username}{self.name}"
+
+

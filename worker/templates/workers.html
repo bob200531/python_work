@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+            {% block my_title %}
+                    Поиск работников
+            {% endblock %}
+
+{% block content %}
     <h1>Работники</h1>
     {% for n in workers %}
-        <div>{{n.name}}-{{n.specialization}}-{{n.expected_salary}}-{{n.job_search}}</div>
+        <div><a href="/vacancy/{{n.id}}">{{n.name}}</a>-{{n.specialization}}-{{n.expected_salary}}-{{n.job_search}}</div>
     {%endfor%}
-</body>
-</html>
+{% endblock %}

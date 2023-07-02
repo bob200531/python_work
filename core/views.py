@@ -30,8 +30,20 @@ def vacancies_list(request):
     context['example']='hello world'
     return render(request, 'vacancies.html',context)
 
+def vacancies_info(request,id):
+    information_read=Vacancy.objects.get(id=id)
+    candidate = information_read.candidates.all()
+    context={
+        'read':information_read,
+        'candidates':candidate,
+    }
+    return render(request,"vacancies/vacancies.html",context)
+
 def copmpany_list(request):
     company=Comapany.objects.all
     context={'company':company}
     context['example']="lorem ipsum"
     return render(request, "company.html",context)
+
+
+

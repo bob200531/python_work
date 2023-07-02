@@ -9,7 +9,7 @@ class Vacancy(models.Model):
     is_relevant=models.BooleanField(default=True)
     email=models.EmailField()
     contacts=models.CharField(max_length=100,verbose_name='контакты')
-    candidate=models.ManyToManyField(
+    candidates=models.ManyToManyField(
         to=Workers,
         blank=True
     )
@@ -17,9 +17,21 @@ class Vacancy(models.Model):
         to=User,
         blank=True
     )
+    category=models.ForeignKey(
+        to='Vacancy_category',
+        null=True,blank=True,
+        on_delete=models.SET_NULL,
+        verbose_name='категория'
+    )
 
-# def __str__(self):
-#     return self.title
+    class Meta:
+        verbose_name='Вакансия'
+        verbose_name_plural='Вакансия'
+        ordering=['salary']
+
+
+    def __str__(self):
+        return self.title
 
 
 class Comapany(models.Model):
@@ -28,6 +40,9 @@ class Comapany(models.Model):
     number_employees=models.IntegerField(null=True,blank=True)
     search_employees=models.BooleanField(default=True)
 
-def __str__(self):
-    return self.title
+class Vacancy_category(models.Model):
+    name=models.CharField(max_length=255)
+    description=models.TextField(null=True,blank=True)
+    def __str__(self):
+         return self.name
 

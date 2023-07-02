@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+        {% for r in resumes %}
+                <div><a href="/resume-info/{{ r.id }}">
+                        <hr>
+                        {{ r.name }}
+                        </a>
+                        <hr>
+                        {{ r.author }}
+                        <hr>
+                        {{ r.resume_text }}
+                        <hr>
+                        {{ r.experience }}
+                        <hr>
+                        {{ r.education }}
+                        <hr>
+                        {{ r.skill }}
+                        <hr>
+                        {{ r.contacts }}
+
+                </div>
+        {% endfor %}
+{% endblock %}|
+
