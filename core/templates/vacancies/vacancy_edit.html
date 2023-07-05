@@ -1,0 +1,15 @@
+{% extends  "base.html" %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="text" value='{{ new_vacancy.title }}'><br><br>
+        <input type="number" name="salary" placeholder="зарплата" value='{{ new_vacancy.salary }}'><br><br>
+        <textarea name="description"  cols="20" rows="5"></textarea><br><br>
+        <input type="email" name="email" placeholder="email" value='{{ new_vacancy.email }}'><br><br>
+        <input type="text" name="contacts" placeholder="contacts" value='{{ new_vacancy.contacts }}'><br><br>
+        <button>Изменить</button>
+    </form>
+
+
+{% endblock %}

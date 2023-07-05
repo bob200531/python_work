@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+        <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="имя" value="name"><br><br>
+<!--        <input type="author" name="author" placeholder="пользыватель" value="author"><br><br>-->
+                <textarea name="resume_text"  cols="30" rows="10"></textarea><br><br>
+                <input type="number" name="experience" placeholder="опыт" value="experience"><br><br>
+                <input type="number" name="contacts" placeholder="контакты" value="contacts"><br><br>
+                <button>Изменить</button>
+        </form>
+{% endblock %}

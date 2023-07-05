@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Vacancy
 from .models import Comapany
+from django.contrib.auth.models import User
 # HttpResponse
 # Create your views here.
 
@@ -46,4 +47,65 @@ def copmpany_list(request):
     return render(request, "company.html",context)
 
 
+def search(request):
+    word=request.GET['keyword']
+    vacancies_list=Vacancy.objects.filter(title__contains=word)
+    context = {'vacancies': vacancies_list}
+    return render(request, 'vacancies.html', context)
 
+def reg_view(request):
+    if request.method == "POST":
+        user = User(
+            username=request.POST["username"]
+        )
+        user.save()
+        user.set_password(request.POST["password"])
+        user.save()
+        return HttpResponse("Готово")
+
+    return render(
+        request,
+        "auth/registr.html"
+    )
+
+def vacancy_add(request):
+    if request.method=='POST':
+        add_vacancy=Vacancy(
+            title =request.POST['title'],
+            salary= request.POST['salary'],
+            description= request.POST['description'],
+            email = request.POST['email'],
+            contacts=request.POST['contacts']
+        )
+        add_vacancy.save()
+        # add_vacancy=add_vacancy.save()
+        return redirect(f'/vacancy/{add_vacancy.id}/')
+        # return redirect(vacancies_info,id=add_vacancy.id)
+        # add_vacancy.save()
+    return render(request,"vacancies/vacancy_add.html")
+
+
+def vacancy_edit(request, id):
+    new_vacancy = Vacancy.objects.get(id=id)
+    if request.method == 'POST':
+        new_vacancy.title = request.POST['title']
+        new_vacancy.salary = int(request.POST['salary'])
+        new_vacancy.description = request.POST['description']
+        new_vacancy.email = request.POST['email']
+        new_vacancy.contacts = request.POST['contacts']
+        new_vacancy.save()
+        return redirect(f'/vacancy/{new_vacancy.id}/')
+    return render(request, "vacancies/vacancy_edit.html", {'vacancy': new_vacancy})
+
+# def vacancy_edit(request,id):
+#     new_vacancy = Vacancy.objects.get(id=id)
+#     if request.method=='POST':
+#         new_vacancy.title=request.POST['title']
+#         new_vacancy.salary=int(request.POST['salary']),
+#         new_vacancy.description=request.POST['description'],
+#         new_vacancy.email=request.POST['email'],
+#         new_vacancy.contacts=request.POST['contacts']
+#         new_vacancy.save()
+#         return redirect(f'/vacancy/{add_vacancy.id}/')
+#     return render(request,"vacancies/vacancy_edit.html",{'vacancy':new_vacancy})
+#

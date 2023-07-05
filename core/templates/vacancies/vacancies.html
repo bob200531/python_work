@@ -13,6 +13,7 @@
     {% for a in candidates %}
         <div>{{ a.name }}</div>
     {% endfor %}
+    <a href="{% url 'vacancy-edit'  read.id %}">Изменить</a>
 
 
 {% endblock %}

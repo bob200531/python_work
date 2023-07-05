@@ -20,21 +20,30 @@ from django.urls import path
 # from handhunter.core.views import homepage
 # from handhunter.core.views import contacts
 # from handhunter.core.views import about
-from core.views import about, contacts,adres,homepage,vacancies_list,copmpany_list,vacancies_info
-from worker.views import workers_Info,workers_info,resume_info,resume_list,my_resume
+from core.views import about, contacts,adres,homepage,vacancies_list,copmpany_list,vacancies_info,search,reg_view
+from worker.views import workers_Info,workers_info,resume_info,resume_list,my_resume,add_resume
+from core.views import vacancy_add,vacancy_edit
+from  worker.views import resume_edit
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/',about),
     path('contacts/',contacts),
     path('adres/',adres),
-    path('homepage/',homepage),
+    path('homepage/',homepage,name="home"),
     # path('', homepage),
     path('vacancies/',vacancies_list),
+    path('vacancy/<int:id>/', vacancies_info, name='vacancy-info'),
+    path('add-vacansies/', vacancy_add),
+    path('vacancy-edit/<int:id>/',vacancy_edit, name='vacancy-edit'),
     path('company/',copmpany_list),
     path('workers/',workers_Info),
     path('worker/<int:id>/',workers_info),
     path('resume-list/',resume_list),
     path('resume-info/<int:id>/',resume_info),
     path('my-resume/',my_resume,name='my-resume'),
-    path('vacancy/<int:id>/',vacancies_info),
+    # path('vacancy/<int:id>/',vacancies_info,name='vacancy-info'),
+    path('search/',search,name='search'),
+    path('add-resume/',add_resume,name='add-resume'),
+    path('resume-edit/<int:id>/',resume_edit,name='resume-edit'),
+    path('registration/',reg_view, name='reg'),
 ]

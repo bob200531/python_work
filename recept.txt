@@ -29,6 +29,11 @@ git push -u origin main
 git add .
 git commit -m "some text"
 git push
+git resert отмена
+git revert безопасная отмена
+git stash для хронение изменений не готовых к коммиту
+git log просмотор индефикаторов ,очек сохранения
+
 
 # клонирование
 # cd projectFolder

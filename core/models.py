@@ -28,6 +28,7 @@ class Vacancy(models.Model):
         verbose_name='Вакансия'
         verbose_name_plural='Вакансия'
         ordering=['salary']
+        unique_together=[['title', 'email']]#уникальность полей
 
 
     def __str__(self):

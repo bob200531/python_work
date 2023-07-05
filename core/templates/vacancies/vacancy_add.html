@@ -1,0 +1,15 @@
+
+{% extends  "base.html" %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="text"><br><br>
+        <input type="number" name="salary" placeholder="зарплата"><br><br>
+        <textarea name="description"  cols="20" rows="5"></textarea><br><br>
+        <input type="email" name="email" placeholder="email"><br><br>
+        <input type="text" name="contacts" placeholder="contacts"><br><br>
+        <button>Добавить</button>
+    </form>
+
+{% endblock %}
