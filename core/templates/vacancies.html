@@ -8,5 +8,6 @@
     {{ example }}
     {% for i in vacancies %}
         <div><a href="{% url 'vacancy-info' i.id %}">{{ i.title }}</a><-{{i.salary}}-{{ i.description }}</div>
+        <a href="{% url 'vacancy-redactor' i.id %}">Изменить</a>
     {% endfor %}
 {% endblock %}

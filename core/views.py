@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Vacancy
 from .models import Comapany
 from django.contrib.auth.models import User
-from .forms import VacancyForm
+from .forms import VacancyForm,VacancyEditform,CompanyForm,CompanyEdit
 # HttpResponse
 # Create your views here.
 
@@ -46,6 +46,39 @@ def copmpany_list(request):
     context={'company':company}
     context['example']="lorem ipsum"
     return render(request, "company.html",context)
+
+
+def company_lists(request,id):
+    lists_company=Comapany.objects.get(id=id)
+    context={'lists':lists_company}
+    return render(request,'company/company_list.html',context)
+
+
+def company_add(request):
+    if request.method=='POST':
+        company_form=CompanyForm(request.POST)
+        if company_form.is_valid():
+            company_form.save()
+            new_company=company_form.save()
+            # return HttpResponse('Добавлено')
+            return redirect(f'/company-list/{new_company.id}/')
+    ad_company=CompanyForm()
+    return render(request,'company/company_add.html',{'add':ad_company})
+
+
+def company_redactor(request,id):
+    company_redactor = Comapany.objects.get(id=id)
+    # company_redactor=Comapany.objects.get(id=id)
+    if request.method == 'GET':
+        redact=CompanyForm(instance=company_redactor)
+        return render(request,'company/company_redacto.html',{'redactor_company': redact})
+    elif request.method == 'POST':
+        redact=CompanyForm(data=request.POST,instance=company_redactor)
+        company_save=redact.save()
+        return redirect(company_lists,id=company_save.id)
+
+
+
 
 
 def search(request):
@@ -107,6 +140,19 @@ def vacancy_add_via_django_form(request):
             return redirect(f'/vacancy/{new_vacancy.id}/')
     vacancy_form=VacancyForm()
     return render(request, "vacancies/vacancy_django_form.html",{'vacancy_form': vacancy_form})
+
+
+def vacancy_redacto(request,id):
+    vacancy_redact=Vacancy.objects.get(id=id)
+    if request.method == 'GET':
+        form_redact=VacancyEditform(instance=vacancy_redact)
+        return render(request,'vacancies/vacancy_redact.html',{'redict': form_redact})
+    elif request.method == 'POST':
+        form=VacancyEditform(data=request.POST,instance=vacancy_redact)
+        redict=form.save()
+        return redirect(vacancies_info,id=redict.id)
+
+
 
 # def vacancy_edit(request,id):
 #     new_vacancy = Vacancy.objects.get(id=id)

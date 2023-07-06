@@ -20,10 +20,12 @@
             <a href="/my-resume">Мои резюме</a>|
             <a href="/add-resume-df">Добавление django form</a>|
             <a href="/admin">admin</a>|
+<!--            <a href="/company">Список компаний</a>-->
 <!--            защита -->
             {% if request.user.is_authenticated %}
             <a href="{% url 'add-resume' %}"></a>
                     Пивет {{ request.user.username }}|
+            <a href="/company">Список компаний</a>
             {% else %}
             <a href="{% url 'reg' %}">Регистрация</a>
             Пожалуста, вторизуйтесь !

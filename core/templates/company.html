@@ -7,8 +7,8 @@
 <body>
     <h1>Компании</h1>
     {% for i in company %}
-        <div>{{ i.name}}-{{i.address}}-{{ i.number }}-{{ search_employees }}</div>
+        <div><a href="/company-list/{{i.id}}">{{ i.name}}</a>-{{i.address}}-{{ i.number }}-{{ i.search_employees }}-{{ i.created_at }}</div>
+        <a href="/company-redactor/{{i.id}}">Изменить</a>
     {% endfor %}
-
 </body>
 </html>

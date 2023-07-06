@@ -40,6 +40,7 @@ class Comapany(models.Model):
     address=models.CharField(max_length=255)
     number_employees=models.IntegerField(null=True,blank=True)
     search_employees=models.BooleanField(default=True)
+    created_at = models.TimeField(auto_now_add=True, verbose_name='Время создания',null=True,blank=True)
 
 class Vacancy_category(models.Model):
     name=models.CharField(max_length=255)

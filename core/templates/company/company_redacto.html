@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ redactor_company.as_p }}
+        <button>Изменить</button>
+    </form>
+
+{% endblock %}

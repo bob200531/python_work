@@ -22,8 +22,8 @@ from django.urls import path
 # from handhunter.core.views import about
 from core.views import about, contacts,adres,homepage,vacancies_list,copmpany_list,vacancies_info,search,reg_view
 from worker.views import workers_Info,workers_info,resume_info,resume_list,my_resume,add_resume
-from core.views import vacancy_add,vacancy_edit,vacancy_add_via_django_form
-from  worker.views import resume_edit,add_resume_df_django_form
+from core.views import vacancy_add,vacancy_edit,vacancy_add_via_django_form,vacancy_redacto,company_add,company_lists,company_redactor
+from  worker.views import resume_edit,add_resume_df_django_form,resume_edit_dj
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/',about),
@@ -36,7 +36,11 @@ urlpatterns = [
     path('add-vacansies/', vacancy_add),
     path('add-vacansies-df/',vacancy_add_via_django_form),
     path('vacancy-edit/<int:id>/',vacancy_edit, name='vacancy-edit'),
+    path('vacancy-redactor/<int:id>/',vacancy_redacto,name='vacancy-redactor'),
     path('company/',copmpany_list),
+    path('company-list/<int:id>/',company_lists,name='company-list'),
+    path('company_add/',company_add,name='company_add'),
+    path('company-redactor/<int:id>/',company_redactor),
     path('workers/',workers_Info),
     path('worker/<int:id>/',workers_info),
     path('resume-list/',resume_list),
@@ -46,6 +50,7 @@ urlpatterns = [
     path('search/',search,name='search'),
     path('add-resume/',add_resume,name='add-resume'),
     path('resume-edit/<int:id>/',resume_edit,name='resume-edit'),
+    path('resume-edit-dj/<int:id>/',resume_edit_dj,name='resume-edit-dj'),
     path('add-resume-df/',add_resume_df_django_form),
     path('registration/',reg_view, name='reg'),
 ]

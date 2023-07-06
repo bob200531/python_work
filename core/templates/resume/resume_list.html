@@ -20,6 +20,7 @@
                         <hr>
                         {{ r.contacts }}
                         <a href="/resume-edit/{{ r.id }}">Изменить</a>
+                        <a href="{% url 'resume-edit-dj' r.id %}">Изменение резюме</a>
 
                 </div>
         {% endfor %}

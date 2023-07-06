@@ -2,7 +2,7 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.http import HttpResponse
 from  .models import Workers
 from .models import Resume
-from .resume_forms import ResumeForm
+from .resume_forms import ResumeForm,ResumeEditform
 # redirect перенаправлени по сылке
 # Create your views here.
 
@@ -64,15 +64,35 @@ def resume_edit(request, id):
     return render(request, 'resume/resume_redactor.html', {'resume': redactor_resume})
 
 
+def resume_edit_dj(request,id):
+    resume_objec=Resume.objects.get(id=id) # записывает даные передачей request.POST
+    if request.method=='GET':
+        form = ResumeEditform(instance=resume_objec) # считыват данные
+        return render(request,'resume/resume_edit_dj.html',{'redacterion':form})
+    elif request.method=='POST':
+        form = ResumeEditform(data=request.POST,instance=resume_objec)
+        obj=form.save()
+        return redirect(resume_info,id=obj.id)
+
 def add_resume_df_django_form(request):
     if request.method == 'POST':
-        form_resume=ResumeForm(request.POST)
+        form_resume = ResumeForm(request.POST)
         if form_resume.is_valid():
-            resume_new=form_resume.save()
+            resume_new = form_resume.save(commit=False)
+            resume_new.author_id = request.user.id  # Устанавливаем идентификатор текущего пользователя как автора резюме
+            resume_new.save()
             return redirect(f'/resume-info/{resume_new.id}/')
     obj_resume = ResumeForm()
-    return render(request,'resume/resume_django_form.html',{'resume_ad':obj_resume})
+    return render(request, 'resume/resume_django_form.html', {'resume_ad': obj_resume})
 
+# def add_resume_df_django_form(request):
+#     if request.method == 'POST':
+#         form_resume=ResumeForm(request.POST)
+#         if form_resume.is_valid():
+#             resume_new=form_resume.save()
+#             return redirect(f'/resume-info/{resume_new.id}/')
+#     obj_resume = ResumeForm()
+#     return render(request,'resume/resume_django_form.html',{'resume_ad':obj_resume})
 # def resume_edit(request,id):
 #     redactor_resume = Resume.objects.get(id=id)
 #     if request.method == 'GET':

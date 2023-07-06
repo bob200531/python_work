@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p style="border: 1px solid ;">Имя:{{ lists.name }}</p>
+    <p style="border: 1px solid ;">Адесс:{{ lists..address }}</p>
+    <p style="border: 1px solid ;">Число сотрудников:{{ lists.number_employees }}</p>
+    <p style="border: 1px solid ;">Search_employees:{{ lists.search_employees }}</p>
+    <p style="border: 1px solid ;">Время:{{ lists.created_at }}</p>
+{% endblock %}
