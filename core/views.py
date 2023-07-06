@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Vacancy
 from .models import Comapany
 from django.contrib.auth.models import User
+from .forms import VacancyForm
 # HttpResponse
 # Create your views here.
 
@@ -96,6 +97,16 @@ def vacancy_edit(request, id):
         new_vacancy.save()
         return redirect(f'/vacancy/{new_vacancy.id}/')
     return render(request, "vacancies/vacancy_edit.html", {'vacancy': new_vacancy})
+
+
+def vacancy_add_via_django_form(request):
+    if request.method=='POST':
+        form=VacancyForm(request.POST)
+        if form.is_valid():
+            new_vacancy=form.save()
+            return redirect(f'/vacancy/{new_vacancy.id}/')
+    vacancy_form=VacancyForm()
+    return render(request, "vacancies/vacancy_django_form.html",{'vacancy_form': vacancy_form})
 
 # def vacancy_edit(request,id):
 #     new_vacancy = Vacancy.objects.get(id=id)

@@ -2,6 +2,7 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.http import HttpResponse
 from  .models import Workers
 from .models import Resume
+from .resume_forms import ResumeForm
 # redirect перенаправлени по сылке
 # Create your views here.
 
@@ -42,7 +43,6 @@ def add_resume(request):
 
 
 
-
 def resume_info(request,id=id):
     resume_object=Resume.objects.get(id=id)
     context={'resume':resume_object}
@@ -62,6 +62,16 @@ def resume_edit(request, id):
         redactor_resume.save()
         return redirect(f'/resume-info/{redactor_resume.id}/')
     return render(request, 'resume/resume_redactor.html', {'resume': redactor_resume})
+
+
+def add_resume_df_django_form(request):
+    if request.method == 'POST':
+        form_resume=ResumeForm(request.POST)
+        if form_resume.is_valid():
+            resume_new=form_resume.save()
+            return redirect(f'/resume-info/{resume_new.id}/')
+    obj_resume = ResumeForm()
+    return render(request,'resume/resume_django_form.html',{'resume_ad':obj_resume})
 
 # def resume_edit(request,id):
 #     redactor_resume = Resume.objects.get(id=id)
