@@ -44,4 +44,4 @@ git log просмотор индефикаторов ,очек сохранен
 python manage.py makemigrations
 python manage.py migrate
 
-
+col-sm-3 настройки размера 

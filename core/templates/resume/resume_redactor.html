@@ -2,13 +2,37 @@
 
 
 {% block content %}
-        <form method="POST">
-                {% csrf_token %}
-                <input type="text" name="name" placeholder="имя" value="name"><br><br>
-<!--        <input type="author" name="author" placeholder="пользыватель" value="author"><br><br>-->
-                <textarea name="resume_text"  cols="30" rows="10"></textarea><br><br>
-                <input type="number" name="experience" placeholder="опыт" value="experience"><br><br>
-                <input type="number" name="contacts" placeholder="контакты" value="contacts"><br><br>
-                <button>Изменить</button>
-        </form>
+<form method="POST">
+        {% csrf_token %}
+          <div class="mb-3 mx-5 row">
+    <label for="text" class="col-sm-2 col-form-label">Имя:</label>
+    <div class="col-sm-10">
+            <input type="text"  class="form-control" id="text" name="name"  value="{{ resume.name }}">
+    </div>
+  </div>
+  <div class="mb-3 mx-5 row">
+    <label for="number" class="col-sm-2 col-form-label">Опыт:</label>
+    <div class="col-sm-10">
+       <input type="number" class="col-sm-2 col-form-label" id='number'  name="experience" value="{{ resume.experience }}">
+    </div>
+       <label for="exampleFormControlTextarea1" class="form-label">Добавочное описание:</label>
+    <textarea name="resume_text" class="form-control btn btn-outline-success" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+    <div class="col-sm-10 mb-3 mx-5">
+         <label for="text" class="col-sm-2 col-form-label">Контакты:</label>
+         <input type="number"  class="form-control" id="text" name="contacts"  value="contacts">
+    </div>
+    <div class="mb-3 mx-5">
+    <button class="btn btn-success col-sm-10">Изменить</button>
+    </div>
+</form>
+<!--        <form method="POST">-->
+<!--                {% csrf_token %}-->
+<!--                <input type="text" name="name" placeholder="имя" value="name"><br><br>-->
+<!--&lt;!&ndash;        <input type="author" name="author" placeholder="пользыватель" value="author"><br><br>&ndash;&gt;-->
+<!--                <textarea name="resume_text"  cols="30" rows="10"></textarea><br><br>-->
+<!--                <input type="number" name="experience" placeholder="опыт" value="experience"><br><br>-->
+<!--                <input type="number" name="contacts" placeholder="контакты" value="contacts"><br><br>-->
+<!--                <button>Изменить</button>-->
+<!--        </form>-->
 {% endblock %}

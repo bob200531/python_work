@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Подключение необходимых стилей Bootstrap -->
+    {% load static %} 
+    <!-- подключение  всю статику -->
+
+
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'my_style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <title>
         {% block my_title %}
                 Hand hunter
@@ -9,6 +18,55 @@
     </title>
 </head>
 <body>
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+          <h5 class="text-white h4">Collapsed content</h5>
+          <span class="text-muted"></span>
+          <div style="display: inline-block;margin-left: 20px;">
+            <a class="btn btn-success" href="/homepage">Home</a>|
+          </div>
+          <div style="display: inline-block;margin-left: 20px;">
+            <a class="btn btn-success" href="/workers">Кандидаты</a>|
+          </div>
+          <div style="display: inline-block;margin-left: 20px;">
+            <a class="btn btn-success" href="/resume-list">Резюме</a>|
+          </div>
+          <div style="display: inline-block;margin-left: 20px;">
+            <a class="btn btn-success" href="/add-resume-df">Добавить резюме</a>
+          </div>
+          <div style="display: inline-block;margin-left: 20px;">
+            <a class="dropdown-toggle btn btn-success" href="/vacancies" role="button" data-bs-toggle="dropdown">Вакансии</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/vacancies">Вакансии</a></li>
+                <li><a class="dropdown-item" href="/add-vacansies-df">Добавить (dj form)</a></li>
+                <li><a class="dropdown-item" href="/about">Работник</a></li>
+                <li><a class="dropdown-item" href="/add-vacansies">Добавить вакансии</a></li>
+              </ul>
+            <!-- <a class="btn btn-success" href="/vacancies">Вакансии</a> -->
+          </div>
+          <div style="display: inline-block;margin-left: 20px;">
+            <a class="btn btn-success" href="/add-vacansies/">Добавить Вакансии</a>|
+          </div>
+          <div style="display: inline-block;margin-left: 20px;">
+            {% if request.user.is_authenticated %}
+            <form method="GET" action="/search">
+                <input type="text" placeholder="Ключевое слово" name="keyword" class="btn btn-outline-success">
+                <button class="btn btn-success">Поиск</button>
+            </form>
+            {% else %}
+            <a style="color: rgb(168, 149, 149);" href="{% url 'reg' %}">Регистрация</a>
+            Пожалуста, вторизуйтесь !
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
         <nav>
             <a href="/homepage">Home</a>|
             <a href="/vacancies">Вакансии</a>|
@@ -17,7 +75,7 @@
             <a href="/workers">Кандидаты</a>|
             <a href="/about">Рботник мечты</a>|
             <a href="/resume-list">Резюме</a>|
-            <a href="/add-resume-df">Добавить резюме</a>
+            <a href="/add-resume">Добавить резюме</a>
             <a href="/my-resume">Мои резюме</a>|
             <a href="/add-resume-df">Добавление django form</a>|
             <a href="/admin">admin</a>|

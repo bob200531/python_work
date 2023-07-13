@@ -2,11 +2,28 @@
 {% extends  "base.html" %}
 
 {% block content %}
-    <form method="POST">
-            {% csrf_token %}
-            <input type="text" name="form-title">
-            <hr>
-            <textarea name="forma-text" cols="30" rows="10"></textarea>
-            <button>Добавить</button>
-    </form>
+<form method="POST">
+    {% csrf_token %}
+        <div class="row col-sm-3">
+          <div class="col mx-4">
+            <label for="text" class="form-label">Текст:</label>
+            <input type="text" class="form-control btn btn-outline-success" id="text"  name="form-title">
+          </div>
+          <div class="row mx-4">
+                <label for="exampleFormControlTextarea1" class="form-label">Добавочное описание:</label>
+                <textarea name="forma-text" class="form-control btn btn-outline-success" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class="mx-5">
+            <br>
+            <button class="btn btn-success col-sm-10">Добавить</button>
+          </div>
+        </div>
+</form>
+<!--    <form method="POST">-->
+<!--            {% csrf_token %}-->
+<!--            <input type="text" name="form-title">-->
+<!--            <hr>-->
+<!--            <textarea name="forma-text" cols="30" rows="10"></textarea>-->
+<!--            <button>Добавить</button>-->
+<!--    </form>-->
 {% endblock %}

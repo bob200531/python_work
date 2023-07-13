@@ -1,15 +1,44 @@
 {% extends  "base.html" %}
 
 {% block content %}
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="title" placeholder="text" value='{{ new_vacancy.title }}'><br><br>
-        <input type="number" name="salary" placeholder="зарплата" value='{{ new_vacancy.salary }}'><br><br>
-        <textarea name="description"  cols="20" rows="5"></textarea><br><br>
-        <input type="email" name="email" placeholder="email" value='{{ new_vacancy.email }}'><br><br>
-        <input type="text" name="contacts" placeholder="contacts" value='{{ new_vacancy.contacts }}'><br><br>
-        <button>Изменить</button>
-    </form>
+<form method="POST">
+    {% csrf_token %}
+    <div  class="mb-3 row col-sm-3 mx-auto ">
+  <div class="mb-3 mt-3 col-sm-10">
+    <label for="text" class="form-label">Название:</label>
+      <input type="text" class="form-control btn btn-outline-success" id="text" name="title"  value='{{ vacancy.title }}'>
+  </div>
+  <div class="mb-3 col-sm-10">
+    <label for="number" class="form-label">Зарплата:</label>
+       <input type="number" class="form-control btn btn-outline-success" id="number" name="salary" value='{{ vacancy.salary }}'>
+  </div>
+    <div class="col-sm-10">
+        <label for="exampleFormControlTextarea1" class="form-label">Добавочное описание:</label>
+    <textarea name="description" class="form-control btn btn-outline-success" id="exampleFormControlTextarea1" rows="3">{{ vacancy.description}}</textarea>
+    </div>
+     <div class="mb-3 mt-3 col-sm-10">
+    <label for="email" class="form-label">Email:</label>
+         <input type="email" class="form-control btn btn-outline-success" id="email" name="email" value='{{ vacancy.email }}'>
+  </div>
+     <div class="mb-3 col-sm-10">
+    <label for="text" class="form-label">Контакты:</label>
+          <input type="text"  class="form-control btn btn-outline-success" id="text" name="contacts"  value='{{ vacancy.contacts }}'>
+  </div>
+    <div>
+   <br>
+  <button class="btn btn-success col-sm-10 ">Изменить</button>
+  </div>
+  </div>
+</form>
+<!--    <form method="POST">-->
+<!--        {% csrf_token %}-->
+<!--        <input type="text" name="title" placeholder="text" value='{{ vacancy.title }}'><br><br>-->
+<!--        <input type="number" name="salary" placeholder="зарплата" value='{{ vacancy.salary }}'><br><br>-->
+<!--        <textarea name="description"  cols="20" rows="5">{{ vacancy.description}}</textarea><br><br>-->
+<!--        <input type="email" name="email" placeholder="email" value='{{ vacancy.email }}'><br><br>-->
+<!--        <input type="text" name="contacts" placeholder="contacts" value='{{ vacancy.contacts }}'><br><br>-->
+<!--        <button>Изменить</button>-->
+<!--    </form>-->
 
 
 {% endblock %}
