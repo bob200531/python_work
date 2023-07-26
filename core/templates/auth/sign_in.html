@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load django_bootstrap5 %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="{% static 'my_style.css' %}">
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    {% bootstrap_messages %}
+    <form method="POST">
+         {% csrf_token %}
+
+        <div class="mb-3  row col-sm-3 mx-auto">
+             <label for="text" class="form-label">Email:</label>
+            <div >
+        <input type="text" class="form-control-sm btn btn-success" id="text" placeholder="Enter email" name="username">
+           </div>>
+         <label for="pwd" class="form-label">Password:</label>
+        <div>
+            <input type="password" class="form-control-sm btn btn-success" id="pwd" placeholder="Enter password" name="password">
+<!--            <input type="password" name="password">-->
+        </div>
+            <div>
+                <br>
+                <button class="col-sm-8  btn btn-success">Войти</button>
+            </div>
+        </div>
+
+    </form>
+
+</body>
+</html>

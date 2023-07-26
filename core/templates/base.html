@@ -50,11 +50,13 @@
           <div style="display: inline-block;margin-left: 20px;">
             {% if request.user.is_authenticated %}
             <form method="GET" action="/search">
+<!--                  <a  href="/sign-out">Выход</a>-->
                 <input type="text" placeholder="Ключевое слово" name="keyword" class="btn btn-outline-success">
                 <button class="btn btn-success">Поиск</button>
             </form>
             {% else %}
-            <a style="color: rgb(168, 149, 149);" href="{% url 'reg' %}">Регистрация</a>
+            <a class="btn btn-success" style="display: inline-block;margin-left: 2px;"  href="{% url 'reg' %}">Регистрация</a>
+              <a class="btn btn-success" style="margin-left: 3px;" href="/sign-in" >Вход</a>
             Пожалуста, вторизуйтесь !
             {% endif %}
           </div>

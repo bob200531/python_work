@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Vacancy
 from .models import Comapany
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
 from .forms import VacancyForm,VacancyEditform,CompanyForm,CompanyEdit
 # HttpResponse
 # Create your views here.
@@ -87,6 +88,21 @@ def search(request):
     context = {'vacancies': vacancies_list}
     return render(request, 'vacancies.html', context)
 
+
+def sign_in(request):
+    if request.method == 'POST':
+        username=request.POST['username']
+        password =request.POST['password']
+        user = authenticate(username=username,password=password)
+        if user :
+            login(request,user)
+            return redirect(homepage)
+        else:
+            return HttpResponse('Неверный логин или пороль ')
+    return render(request,'auth/sign_in.html')
+def sign_out(request):
+    logout(request)
+    return redirect(sign_in)
 def reg_view(request):
     if request.method == "POST":
         user = User(
@@ -166,3 +182,6 @@ def vacancy_redacto(request,id):
 #         return redirect(f'/vacancy/{add_vacancy.id}/')
 #     return render(request,"vacancies/vacancy_edit.html",{'vacancy':new_vacancy})
 #
+
+
+

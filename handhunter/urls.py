@@ -22,7 +22,7 @@ from django.urls import path
 # from handhunter.core.views import about
 from core.views import about, contacts,adres,homepage,vacancies_list,copmpany_list,vacancies_info,search,reg_view
 from worker.views import workers_Info,workers_info,resume_info,resume_list,my_resume,add_resume
-from core.views import vacancy_add,vacancy_edit,vacancy_add_via_django_form,vacancy_redacto,company_add,company_lists,company_redactor
+from core.views import vacancy_add,vacancy_edit,vacancy_add_via_django_form,vacancy_redacto,company_add,company_lists,company_redactor,sign_in,sign_out
 from  worker.views import resume_edit,add_resume_df_django_form,resume_edit_dj
 from django.conf import settings
 from django.conf.urls.static import static
@@ -56,6 +56,8 @@ urlpatterns = [
     path('resume-edit-dj/<int:id>/',resume_edit_dj,name='resume-edit-dj'),
     path('add-resume-df/',add_resume_df_django_form),
     path('registration/',reg_view, name='reg'),
+    path('sign-in/',sign_in,name='sign-in'),
+    path('sign-out/',sign_out,name='sign-out')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

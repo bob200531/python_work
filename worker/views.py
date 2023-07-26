@@ -70,7 +70,7 @@ def resume_edit_dj(request,id):
         form = ResumeEditform(instance=resume_objec) # считыват данные
         return render(request,'resume/resume_edit_dj.html',{'redacterion':form})
     elif request.method=='POST':
-        form = ResumeEditform(data=request.POST,instance=resume_objec)
+        form = ResumeEditform(data=request.POST,instance=resume_objec,files=request.FILES)
         obj=form.save()
         return redirect(resume_info,id=obj.id)
 
