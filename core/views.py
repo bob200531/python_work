@@ -5,10 +5,16 @@ from .models import Comapany
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from .forms import VacancyForm,VacancyEditform,CompanyForm,CompanyEdit
+from  .filters import VacancyFilter
 # HttpResponse
 # Create your views here.
 
 def homepage(request):
+    # if request.method == 'GET':
+    #     return HttpResponse('Метод не разрешен, только GET')
+    # context={}
+    # context['vacban']=Vacancy.objects.all()[:5]
+    # return (request,'info.html',context)
     return render(request=request,template_name='index.html')
     # return HttpResponse('hi'),request
 def about(request):
@@ -28,9 +34,12 @@ def adres(request):
     """)
 
 def vacancies_list(request):
-    vacancies=Vacancy.objects.all
-    context={'vacancies':vacancies}
-    context['example']='hello world'
+    # vacancies=Vacancy.objects.all
+    vacancies_filter = VacancyFilter(request.GET, queryset=Vacancy.objects.all())
+    # context={'vacancies':vacancies}
+    # context['example']='hello world'
+    context ={"vacancies_filter":vacancies_filter}
+    context['example'] = 'hello world'
     return render(request, 'vacancies.html',context)
 
 def vacancies_info(request,id):
@@ -150,7 +159,7 @@ def vacancy_edit(request, id):
 
 def vacancy_add_via_django_form(request):
     if request.method=='POST':
-        form=VacancyForm(request.POST)
+        form=VacancyForm(request.POST,files=request.FILES)
         if form.is_valid():
             new_vacancy=form.save()
             return redirect(f'/vacancy/{new_vacancy.id}/')

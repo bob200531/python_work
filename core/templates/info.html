@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Проверачная информация </h1>
+    {% for i in vacban %}
+        {{ i.title }}
+    {% endfor %}
+
+{% endblock %}

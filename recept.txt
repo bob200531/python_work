@@ -41,7 +41,18 @@ git log просмотор индефикаторов ,очек сохранен
 
 
 модели сценарий
+python manage.py flush  # Удалить данные из базы данных
 python manage.py makemigrations
 python manage.py migrate
+python -Xutf8 manage.py dumpdata --exclude=contenttypes > data.json
+python manage.py loaddata data.json
+
 
 col-sm-3 настройки размера 
+
+cd путешествие по пакам ,cd.. выход
+контрал f5 стирает хэш браузера
+<!--        <div>-->
+<!--        <img src="{{ resume.profile_photo.url }} " height="100px" width="170px">-->
+<!--    </div>-->
+<!--    {% for i in vacancies %}-->

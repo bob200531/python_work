@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+      <h1 class="recruit">Рекрутеры</h1>
+      {% for i in recruit %}
+            <div>
+                  <a href="{% url 'recruit_detail' i.pk %}">{{ i.user.username }}</a>
+            </div>
+            {% empty %}
+            <div>
+                  Записей нет
+            </div>
+      {% endfor %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+     {{ news_deatail.author.username }}
+               <br>
+            {{  news_deatail.description }}
+                 <br>
+            {{ news_deatail.created_at }}
+                 <br>
+            {{ news_deatail.updated_at }}
+                 <br>
+            {{ news_deatail.views_count }}
+                 <br>
+            {{ news_deatail.user.username }}
+               <br>
+          {{ news_deatail.likes_users.username }}
+
+
+{% endblock %}

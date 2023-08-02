@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+        <h1>Рекрутер:{{ recruit_detail.user.username }}</h1>
+                <div>
+                        Город: {{ recruit_detail.city|default_if_none:"Не указано" }}
+                    <br>
+                        Страна:{{  recruit_detail.country|default_if_none:"Не указано" }}
+                    <br>
+                        Платеж: за кандидата:{{ recruit_detail.payment_for_found|default_if_none:"Не указано" }}
+                    <br>
+                        Процент:за работу:{{ recruit_detail.bonus_percent|default_if_none:"Не указано" }}
+                </div>
+{% endblock %}
+

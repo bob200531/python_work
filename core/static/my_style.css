@@ -1,14 +1,25 @@
 h1 {
-    color:rgb(1, 104, 120);
+   color:rgb(1, 104, 120);
 }
 
-.homepage {
+.homepage  {
+    height: 60vh;
+	padding: 10px;
         background:
-                linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+                linear-gradient(rgba(255,255,255,0.0), rgba(255,255,255,0.0)),
                 url("banner.jpeg")
                 center / cover;
+    color : white
+}
+.homepage h1 {
+    color : white
+}
+.marg {
+    margin-left: 620px;
 }
 
-.w {
-    color: chartreuse;
+
+.special {
+    width : 200px;
+   margin-left: 30px;
 }

@@ -4,7 +4,7 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {% bootstrap_form resume_ad %}
 <!--            {{ resume_ad.as_p }}-->

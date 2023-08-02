@@ -38,10 +38,11 @@ class Resume(models.Model):
     education=models.CharField(max_length=255,verbose_name='Образование',null=True,blank=False)
     skills=models.CharField(verbose_name='Наваки',max_length=255,default='SEO')
     contacts = models.IntegerField(verbose_name='контакты',null=True,blank=False)
+    # contacts = models.CharField(verbose_name='контакты',null=True,blank=False ,max_length=255)
     profile_photo = models.ImageField(
         null=True, blank=True,
         upload_to="profile_photo/",
-        verbose_name='Фото слтрудника',
+        verbose_name='Фото сoтрудника',
     )
 
     def __str__(self):

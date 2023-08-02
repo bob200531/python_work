@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from  .models import Workers
 from .models import Resume
 from .resume_forms import ResumeForm,ResumeEditform
+from django.contrib.auth.decorators import login_required
 # redirect перенаправлени по сылке
 # Create your views here.
 
@@ -26,7 +27,7 @@ def my_resume(request):
         return render(request,'resume/resume_list.html',{'resumes':resume_qery})
     else:
         return redirect("home")
-
+@login_required(login_url='sign-in')
 def add_resume(request):
     if request.method == 'GET':
         return render(request,'resume_add.html')

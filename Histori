@@ -1,0 +1,10 @@
+default_if_none:"Не указано" фиьлтар jinja2
+@login_required дикорадор закрытие страницы не авторизировоного пользывателя
+urlpatterns = [
+    path(
+        "change-password/",
+        auth_views.PasswordChangeView.as_view(template_name="change-password.html"),
+    ),
+]
+https://docs.djangoproject.com/en/4.2/ref/class-based-views/generic-editing/
+generic

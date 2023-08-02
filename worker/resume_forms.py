@@ -4,7 +4,8 @@ from .models import Resume
 class ResumeForm(forms.ModelForm):
     class Meta:
         model = Resume
-        fields = ['name', 'resume_text', 'experience', 'contacts']
+        fields = '__all__'
+        # fields = ['name', 'resume_text', 'experience', 'contacts']
 
 class ResumeEditform(forms.ModelForm):
     class Meta:

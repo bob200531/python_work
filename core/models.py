@@ -3,7 +3,7 @@ from worker.models import Workers
 from django.contrib.auth.models import User
 # Create your models here.
 class Vacancy(models.Model):
-    title=models.CharField(max_length=255,verbose_name='Вазвание вакансии')
+    title=models.CharField(max_length=255,verbose_name='Название вакансии:')
     salary=models.IntegerField(null=True, blank=False,verbose_name='Зарплата')
     description=models.TextField(default='Нет описания',verbose_name='Описание')
     work_experience = models.IntegerField(verbose_name='Опыт работы',default=0)
