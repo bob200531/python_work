@@ -58,9 +58,16 @@ cd путешествие по пакам ,cd.. выход
 <!--        <img src="{{ resume.profile_photo.url }} " height="100px" width="170px">-->
 <!--    </div>-->
 <!--    {% for i in vacancies %}-->
-
+работа в команде
 git clone
 git pull стягивает изменение
 git checkout -b kaium-task-name создает и переключается на созданную ветку
 git branch показывает на какой веткеt checkout
 git checkout переключение между ветками
+
+
+Бесплатный сервер
+ls
+ls -a
+git --version  просмотор версии
+source venv/bin/activate
