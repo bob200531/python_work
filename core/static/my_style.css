@@ -21,5 +21,9 @@ h1 {
 
 .special {
     width : 200px;
-   margin-left: 30px;
+    margin-left: 30px;
+}
+
+.man {
+    width : 200px;
 }

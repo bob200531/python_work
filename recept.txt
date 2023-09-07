@@ -1,7 +1,9 @@
 python -m venv venv
 call source\Scripts\activate
+call venv\Scripts\activate
 pip install django
 pip freeze > requirements.txt
+pip install -r requirements.txt
 django-admin startproject handhunter . # (!) пробел и точка в конце
 python manage.py migrate
 python manage.py createsuperuser
@@ -56,3 +58,9 @@ cd путешествие по пакам ,cd.. выход
 <!--        <img src="{{ resume.profile_photo.url }} " height="100px" width="170px">-->
 <!--    </div>-->
 <!--    {% for i in vacancies %}-->
+
+git clone
+git pull стягивает изменение
+git checkout -b kaium-task-name создает и переключается на созданную ветку
+git branch показывает на какой веткеt checkout
+git checkout переключение между ветками
